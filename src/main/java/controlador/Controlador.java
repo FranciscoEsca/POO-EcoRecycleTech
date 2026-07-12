@@ -69,19 +69,22 @@ public class Controlador {
             agregado = contVidrio.agregarResiduo(residuoActual);
         } else if (tipo.equals("Papel/Carton")) {
             agregado = contPapel.agregarResiduo(residuoActual);
-        } else if (tipo.equals("Elecctronico")) {
+        } else if (tipo.equals("Electronico")) {
             agregado = contElectronico.agregarResiduo(residuoActual);
 
         }
 
         if (agregado){
-            residuoActual = null; //VACIAMOS LA CINTA
+            GestorArchivos.registrarLog(residuoActual); // <-- LÍNEA NUEVA: Guarda el registro
+            residuoActual = null; // Vaciamos la cinta
             vista.getLblResiduoActual().setText("Esperando residuo...");
             actualizarBarras();
         } else {
             //Si el contenedor esta lleno
             JOptionPane.showMessageDialog(vista, "El contenedore de "+ tipo +" esta lleno", "Contenedor lleno", JOptionPane.ERROR_MESSAGE);
         }
+
+
     }
 
     private void actualizarBarras() {

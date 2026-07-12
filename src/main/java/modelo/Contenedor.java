@@ -25,4 +25,7 @@ public abstract class Contenedor {
     public double getCapacidadMaxima() { return capacidadMaxima;}
     public String getTipoAceptado () {return getTipoAceptado();}
 
+    public void setLlenadoActual(double llenadoActual) {
+        this.llenadoActual = llenadoActual;
+    }
 }
